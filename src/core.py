@@ -1,8 +1,10 @@
 import math
 class Core:
-    def __init__(self, password):
+    def __init__(self, password, first, last):
         self.password = password
         self.length = len(password)
+        self.first_name = first
+        self.last_name = last
         self.strength = 0
         return
     
@@ -41,7 +43,7 @@ class Core:
                 repeat_count = 0
         if repeat_count >= 3:
             self.strength -= 15
-            
+
 
     def get_strength(self) -> int:
         return self.strength

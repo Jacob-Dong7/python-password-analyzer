@@ -10,6 +10,10 @@ def main():
         print("  • Length between 2 and 14")
         print("  • Enter 'EXIT' to quit program")
         print("-" * 70)
+        name = input("ENTER YOUR NAME: ")
+        name = name.split()
+        first = name[0]
+        last = name[1]
         password = "".join(input("ENTER PASSWORD: ").split())
         print(f"ENTERED PASSWORD: {password}")
         print("=" * 70)
@@ -22,7 +26,7 @@ def main():
             print("=" * 70)
             return
         else:
-            analyzer = Core(password)
+            analyzer = Core(password, first, last)
             analyzer.length_check()
             analyzer.variety_check()
             print(f"Score: {analyzer.get_strength()}")
