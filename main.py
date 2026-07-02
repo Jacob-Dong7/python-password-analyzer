@@ -2,33 +2,40 @@ from src.core import Core
 def main():
     strength = 0
     password = ""
-    while password is not "EXIT":
+    while True:
         print("=" * 70)
         print("PASSWORD ANALYZER")
         print("=" * 70)
-        print("-" * 70)
         print("RULE:")
         print("  • Length between 2 and 14")
         print("  • Enter 'EXIT' to quit program")
         print("-" * 70)
-        password = input("ENTER PASSWORD: ")
+        password = "".join(input("ENTER PASSWORD: ").split())
+        print(f"ENTERED PASSWORD: {password}")
         print("=" * 70)
 
-        if password is None or len(password) < 2 or len(password) > 14:
-            print("INVALID PASSWORD")
-            print("PASSWORD MUST BE MORE THAN ONE AND LESS THAN 14 CHARACTERS")
+        if not check(password):
             continue
+        elif password == "EXIT":
+            print("=" * 70)
+            print("EXITING..........")
+            print("=" * 70)
+            return
         else:
             analyzer = Core(password)
-            strength = analyzer.length_check()
-            print(strength)
-            break
-            
-    print("-" * 70)
-    print("EXITING..........")
-    print("-" * 70)
-    return
+            analyzer.length_check()
+            analyzer.variety_check()
+            print(f"Score: {analyzer.get_strength()}")
+            continue
 
+def check(password):
+     if password is None or len(password) < 2 or len(password) > 14:
+        print("INVALID PASSWORD")
+        print("PASSWORD MUST BE MORE THAN ONE AND LESS THAN 14 CHARACTERS")
+        return False
+     else:
+         return True
 
+        
 if __name__ == "__main__":
     main()
