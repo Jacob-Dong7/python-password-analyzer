@@ -27,8 +27,10 @@ def main():
             return
         else:
             analyzer = Core(password, first, last)
-            analyzer.length_check()
-            analyzer.variety_check()
+            #analyzer.length_check()
+            #analyzer.variety_check()
+            #analyzer.repeat_check()
+            analyzer.common_password()
             print(f"Score: {analyzer.get_strength()}")
             continue
 
