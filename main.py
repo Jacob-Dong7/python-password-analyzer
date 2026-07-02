@@ -30,7 +30,8 @@ def main():
             #analyzer.length_check()
             #analyzer.variety_check()
             #analyzer.repeat_check()
-            analyzer.common_password()
+            #analyzer.common_password()
+            analyzer.name_check()
             print(f"Score: {analyzer.get_strength()}")
             continue
 

@@ -13,6 +13,7 @@ class Core:
         self.has_lower = False
         self.has_digit = False
         self.has_special = False
+        self.has_name = False
         return
     
     def length_check(self):
@@ -52,9 +53,17 @@ class Core:
         with open("data/common_passwords.txt", "r") as file:
             for line in file:
                 print(self.password)
-                if self.password == line.strip():
+                if self.password.lower() == line.strip().lower():
                     self.strength -= 50
+    
                     return
+    
+    def name_check(self):
+        if self.first_name in self.password or self.last_name in self.password:
+            self.strength -= 50
+            self.has_name = True
+            print("f")
+
                 
         return
     def get_strength(self) -> int:
