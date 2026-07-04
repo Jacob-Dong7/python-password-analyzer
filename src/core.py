@@ -99,9 +99,16 @@ class Core:
         print("REPORT")
         print("=" * 70)
         print(f"STRENGTH: {self.get_grade()}")
-        print(f"SCORE: {self.strength}")
+        if self.strength <= 0:
+            print(f"SCORE: 0 / 100")
+        elif self.strength >= 100:
+            print(f"SCORE: 100 / 100")
+        else:
+            print(f"SCORE: {self.strength} / 100")
         print("=" * 70)
         print("ISSUES:")
+        if self.length != 14:
+            print("Password could be longer")
         if self.used_common_password:
             print("Used common password")
         if self.repeat:
